@@ -17,7 +17,7 @@ class LexerTest {
             Token.LeftBrace,
             Token.RightBrace,
             Token.Comma,
-            Token.Semicolon,
+            Token.Semicolon
         )
 
         for (token in tokens) {
@@ -76,7 +76,7 @@ class LexerTest {
             Token.Identifier("ten"),
             Token.RightParen,
             Token.Semicolon,
-            Token.EndOfFile,
+            Token.EndOfFile
         )
 
         for (token in tokens) {
