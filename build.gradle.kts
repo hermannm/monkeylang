@@ -8,6 +8,7 @@ version = "0.1.0"
 
 sourceSets {
     main.get().kotlin.setSrcDirs(listOf("src"))
+    main.get().resources.setSrcDirs(listOf("resources"))
     test.get().kotlin.setSrcDirs(listOf("tests"))
 }
 
