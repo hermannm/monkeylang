@@ -6,6 +6,11 @@ plugins {
 group = "dev.hermannm"
 version = "0.1.0"
 
+sourceSets {
+    main.get().kotlin.setSrcDirs(listOf("src"))
+    test.get().kotlin.setSrcDirs(listOf("tests"))
+}
+
 repositories {
     mavenCentral()
 }
