@@ -11,23 +11,12 @@ repositories {
     mavenCentral()
 }
 
-kotlin {
-    jvmToolchain(11)
-}
-
 dependencies {
     testImplementation(kotlin("test"))
 }
 
-sourceSets {
-    main {
-        kotlin.setSrcDirs(listOf("src"))
-        resources.setSrcDirs(listOf("resources"))
-    }
-    test {
-        kotlin.setSrcDirs(listOf("test"))
-        resources.setSrcDirs(listOf("test-resources"))
-    }
+kotlin {
+    jvmToolchain(11)
 }
 
 application {
@@ -40,10 +29,21 @@ tasks.named<JavaExec>("run") {
 }
 
 tasks.test {
+    useJUnitPlatform()
+
     testLogging {
         showStandardStreams = true
         events("passed", "skipped", "failed")
     }
+}
 
-    useJUnitPlatform()
+sourceSets {
+    main {
+        kotlin.setSrcDirs(listOf("src"))
+        resources.setSrcDirs(listOf("resources"))
+    }
+    test {
+        kotlin.setSrcDirs(listOf("test"))
+        resources.setSrcDirs(listOf("test-resources"))
+    }
 }
