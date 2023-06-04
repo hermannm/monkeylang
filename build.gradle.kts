@@ -7,6 +7,18 @@ plugins {
 group = "dev.hermannm"
 version = "0.1.0"
 
+repositories {
+    mavenCentral()
+}
+
+kotlin {
+    jvmToolchain(11)
+}
+
+dependencies {
+    testImplementation(kotlin("test"))
+}
+
 sourceSets {
     main {
         kotlin.setSrcDirs(listOf("src"))
@@ -14,7 +26,7 @@ sourceSets {
     }
     test {
         kotlin.setSrcDirs(listOf("test"))
-        resources.setSrcDirs(listOf("test/resources"))
+        resources.setSrcDirs(listOf("test-resources"))
     }
 }
 
@@ -23,16 +35,8 @@ application {
 }
 
 // Configures stdin for application
-tasks.getByName("run", JavaExec::class) {
+tasks.named<JavaExec>("run") {
     standardInput = System.`in`
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation(kotlin("test"))
 }
 
 tasks.test {
@@ -42,8 +46,4 @@ tasks.test {
     }
 
     useJUnitPlatform()
-}
-
-kotlin {
-    jvmToolchain(11)
 }
